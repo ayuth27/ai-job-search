@@ -4,7 +4,9 @@ import {
   parseSearchPage,
   parseJobDetail,
   jobageToDaterange,
+  filterByJobAge,
   htmlToText,
+  type JobCard,
 } from "../src/helpers";
 import { normalizeId } from "../src/commands/detail";
 import { buildUrl } from "../src/commands/search";
@@ -188,6 +190,39 @@ describe("helpers", () => {
     expect(jobageToDaterange(31)).toBe("31");
     expect(jobageToDaterange(60)).toBeNull();
     expect(jobageToDaterange(9999)).toBeNull();
+  });
+
+  function card(id: string, date: string | null): JobCard {
+    return {
+      id,
+      title: "t",
+      company: null,
+      location: null,
+      date,
+      url: `https://th.jobsdb.com/job/${id}`,
+      salary: null,
+      workType: null,
+      workArrangement: null,
+      classification: null,
+      abstract: null,
+    };
+  }
+
+  test("filterByJobAge drops results older than the requested window, keeps unknown dates", () => {
+    const now = new Date("2026-09-16T12:00:00.000Z");
+    const cards = [
+      card("1", "2026-09-16T06:00:00.000Z"), // 6h old - within 7 days
+      card("2", "2026-09-01T00:00:00.000Z"), // ~15 days old - outside 7 days
+      card("3", null), // unknown date - never dropped
+    ];
+    expect(filterByJobAge(cards, 7, now).map((c) => c.id)).toEqual(["1", "3"]);
+  });
+
+  test("filterByJobAge is a no-op for the 'all' sentinel (9999) and non-positive values", () => {
+    const now = new Date("2026-09-16T12:00:00.000Z");
+    const cards = [card("1", "2020-01-01T00:00:00.000Z")];
+    expect(filterByJobAge(cards, 9999, now)).toEqual(cards);
+    expect(filterByJobAge(cards, 0, now)).toEqual(cards);
   });
 
   test("htmlToText decodes numeric entities", () => {

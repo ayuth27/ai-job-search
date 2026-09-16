@@ -152,7 +152,11 @@ async function main(): Promise<number> {
       return 1
     }
     const fmt = (flags.format as string) || "json"
-    const opts: DetailOpts = { id, format: fmt === "plain" ? "plain" : "json" }
+    if (typeof flags.format === "string" && !["json", "plain"].includes(fmt)) {
+      process.stderr.write(JSON.stringify({ error: `--format must be json or plain, got "${fmt}"`, code: "BAD_ARG" }) + "\n")
+      return 1
+    }
+    const opts: DetailOpts = { id, format: fmt as DetailOpts["format"] }
     return runDetail(opts)
   }
 

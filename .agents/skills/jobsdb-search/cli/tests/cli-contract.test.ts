@@ -65,6 +65,13 @@ describe("JobsDB CLI error contract (no network)", () => {
     expect(parsedStderr(result.stderr).code).toBe("BAD_ARG");
   });
 
+  test("detail --format table exits 1 with BAD_ARG instead of falling through to JSON", async () => {
+    const result = await runCLI(["detail", "123", "--format", "table"]);
+    expect(result.exitCode).toBe(1);
+    expect(result.stdout).toBe("");
+    expect(parsedStderr(result.stderr).code).toBe("BAD_ARG");
+  });
+
   test("unknown command exits 1 with BAD_CMD", async () => {
     const result = await runCLI(["frobnicate"]);
     expect(result.exitCode).toBe(1);

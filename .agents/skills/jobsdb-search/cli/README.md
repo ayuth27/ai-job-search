@@ -57,3 +57,5 @@ bun run src/cli.ts detail 94671909 --format plain
 bun run test        # parsing (offline fixture) + contract + one small live smoke test
 bun run typecheck
 ```
+
+`JOBSDB_LIVE_TEST=1 bun test` runs the live smoke test against the portal; it is skipped by default.

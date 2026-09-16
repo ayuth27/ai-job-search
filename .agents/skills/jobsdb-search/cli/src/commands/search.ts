@@ -1,4 +1,4 @@
-import { SEARCH_URL, htmlFetch, parseSearchPage, jobageToDaterange, writeError, type JobCard } from "../helpers.js"
+import { SEARCH_URL, htmlFetch, parseSearchPage, jobageToDaterange, filterByJobAge, writeError, type JobCard } from "../helpers.js"
 
 export interface SearchOpts {
   query: string
@@ -43,7 +43,9 @@ export async function runSearch(opts: SearchOpts): Promise<number> {
       return 1
     }
     const page = parseSearchPage(html)
-    let cards = page.results
+    // The server's daterange bucket rounds up (see jobageToDaterange), so filter
+    // client-side too: drop results known to be older than --jobage.
+    let cards = filterByJobAge(page.results, opts.jobage)
     if (opts.limit !== undefined && opts.limit >= 0) cards = cards.slice(0, opts.limit)
 
     if (opts.format === "table") {

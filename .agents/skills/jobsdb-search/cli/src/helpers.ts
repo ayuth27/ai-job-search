@@ -97,10 +97,10 @@ type Json = Record<string, unknown>
  * skipping over string literals.
  */
 export function extractApolloData(html: string): Json | null {
-  const marker = "window.SEEK_APOLLO_DATA"
-  const at = html.indexOf(marker)
-  if (at === -1) return null
-  const start = html.indexOf("{", at)
+  const marker = /window\.SEEK_APOLLO_DATA\s*=/
+  const match = marker.exec(html)
+  if (!match) return null
+  const start = html.indexOf("{", match.index + match[0].length)
   if (start === -1) return null
 
   let depth = 0
@@ -234,7 +234,7 @@ function parseOneCard(cache: Json, job: Json): JobCard | null {
   const loc = resolveRef(cache, job.location)
   const location = str((loc?.displayName as Json | undefined)?.text) ?? str(field(loc, "label")) ?? null
 
-  const listedAt = job.listedAt as Json | undefined
+  const listedAt = resolveRef(cache, job.listedAt)
   const date = str(listedAt?.dateTimeUtc)
 
   const cjs = job.cjs as Json | undefined
@@ -344,4 +344,24 @@ export function jobageToDaterange(days: number): string | null {
     if (days <= bucket) return String(bucket)
   }
   return null // beyond the portal's maximum: no filter
+}
+
+/**
+ * Client-side backstop for `--jobage`: the server's `daterange` bucket only
+ * accepts 1/3/7/14/31 and `jobageToDaterange` rounds *up* to the next bucket
+ * (and drops the filter entirely above 31), so the server response alone can
+ * include results older than what was asked for. Drop any result whose date
+ * is known and older than `days` days ago; keep results with `date: null`
+ * since their age can't be verified. `days >= 9999` (the CLI's "all" sentinel,
+ * see cli.ts) or a non-finite/non-positive value disables the filter.
+ */
+export function filterByJobAge(cards: JobCard[], days: number, now: Date = new Date()): JobCard[] {
+  if (!Number.isFinite(days) || days <= 0 || days >= 9999) return cards
+  const cutoff = now.getTime() - days * 24 * 60 * 60 * 1000
+  return cards.filter((c) => {
+    if (c.date === null) return true
+    const t = Date.parse(c.date)
+    if (Number.isNaN(t)) return true
+    return t >= cutoff
+  })
 }

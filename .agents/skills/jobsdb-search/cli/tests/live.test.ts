@@ -3,13 +3,16 @@ import { runCLI, parseJSON } from "./helpers";
 
 // One small live smoke test, kept deliberately tiny: a single search page and
 // a single detail fetch. Personal-use portal - do not grow this into a crawl.
+// Skipped by default so CI stays network-free; set JOBSDB_LIVE_TEST=1 to run it.
+const live = process.env.JOBSDB_LIVE_TEST ? test : test.skip;
+
 interface SearchOut {
   meta: { count: number; page: number; total: number | null };
   results: Array<{ id: string; title: string; company: string | null; url: string; date: string | null }>;
 }
 
 describe("JobsDB live smoke test", () => {
-  test("search returns real results with the contract fields, and detail reads one", async () => {
+  live("search returns real results with the contract fields, and detail reads one", async () => {
     const result = await runCLI(["search", "-q", "software engineer", "-l", "Bangkok", "--limit", "3"]);
     const out = parseJSON<SearchOut>(result);
     expect(out.meta.count).toBeGreaterThanOrEqual(1);
