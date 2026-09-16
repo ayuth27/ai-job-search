@@ -18,6 +18,15 @@ Primary (your market's job boards - scaffold one with `/add-portal`):
 - **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
 - **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
 
+Thai market boards (this fork targets Bangkok; use alongside or instead of the placeholders above):
+- **th.jobsdb.com** - JobsDB Thailand, largest English-friendly board (SEEK group)
+- **jobthai.com** - JobThai, highest local traffic; postings mostly in Thai
+- **jobbkk.com** - JobBKK, general Bangkok-area board
+- **jobtopgun.com** - JOBTOPGUN, strong IT/finance niche
+- **linkedin.com/jobs** - filter to Thailand / Bangkok; also covered by `linkedin-search` CLI
+
+Note: technical keywords ("Machine Learning", "AI Engineer", "Python", etc.) are usually kept in English even on Thai-language boards - search the English term on JobThai/JobBKK too, not only the Thai translation.
+
 Secondary (company career pages via Google):
 - Direct Google searches with `site:` filters for known target companies
 
@@ -65,6 +74,21 @@ Wider net for general technical roles.
 site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
 site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
 site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+```
+
+### Thai Market Example Queries
+
+Illustrative queries for AI/ML/software roles in Bangkok, pairing the Thai boards above with matching English and Thai terms. Adapt titles/skills to your own Priority 1-4 categories.
+
+```
+site:th.jobsdb.com "AI Engineer" Bangkok
+site:th.jobsdb.com "Machine Learning Engineer" Bangkok
+site:jobthai.com "วิศวกร AI" กรุงเทพ
+site:jobthai.com "Machine Learning" กรุงเทพมหานคร
+site:jobbkk.com "Data Scientist" กรุงเทพ
+site:jobtopgun.com "Data Scientist"
+site:jobtopgun.com "Software Engineer" Python
+site:linkedin.com/jobs "AI Engineer" Thailand
 ```
 
 ## Location Filter

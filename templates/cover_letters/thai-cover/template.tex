@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thai cover letter - [COMPANY], [ROLE]
+% Compile with: xelatex -interaction=nonstopmode -halt-on-error <file>.tex
+% Needs cover-th.cls and OpenFonts/fonts/{sarabun,lato}/ in the compile directory.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{cover-th}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{Page \thepage \hspace{0pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     TITLE NAME
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\namesection{}{\Huge{[YOUR_NAME]}}{  \href{mailto:[YOUR_EMAIL]}{[YOUR_EMAIL]} | [YOUR_PHONE] |  \urlstyle{same}\href{[YOUR_LINKEDIN_URL]}{LinkedIn}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     MAIN COVER LETTER CONTENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \today prints an English date; write the Thai date out instead.
+\currentdate{[DD] [เดือน] [YYYY]}
+
+% Recipient unknown: use the fallback \lettercontent{เรียน ผู้จัดการฝ่ายสรรหาบุคลากร}
+\lettercontent{เรียน [RECIPIENT_TITLE] คุณ[RECIPIENT_NAME]}
+
+\lettercontent{[Opening paragraph in Thai - the role applied for, where it was
+seen, and the one-line connection to your background. Keep the job title in
+English, e.g. Machine Learning Engineer. 2-3 sentences.]}
+
+\lettercontent{[Body paragraph in Thai introducing the bullet list - the most
+relevant experience for this posting.]}
+
+{\raggedright\fontspec[Path = OpenFonts/fonts/sarabun/]{Sarabun-Regular}\fontsize{11pt}{13pt}\selectfont
+\begin{itemize}
+    \item {[Concrete achievement 1 - tools and frameworks in English]}
+    \item {[Concrete achievement 2]}
+    \item {[Concrete achievement 3]}
+\end{itemize}\par}
+\vspace{6pt}
+
+\lettercontent{[Why this company specifically - mission, product, team.]}
+
+\lettercontent{[Personal fit paragraph - behavioural strengths and what you
+bring to the team. 2-3 sentences.]}
+
+\lettercontent{ขอขอบพระคุณที่สละเวลาพิจารณา และหวังเป็นอย่างยิ่งว่าจะได้รับโอกาสพูดคุยกับท่าน}
+
+\begin{flushright}
+% No trailing \\ inside \closing{} - the class appends its own \\, and a
+% doubled break triggers "! LaTeX Error: There's no line here to end."
+\closing{ขอแสดงความนับถือ}
+
+\signature{[YOUR_NAME]}
+\end{flushright}
+\end{document}
