@@ -1,5 +1,5 @@
 ---
-framework_version: 1.2.6
+framework_version: 1.2.7
 ---
 
 # Job Evaluation Framework
@@ -45,6 +45,20 @@ Read the posting's language requirements as stated for **the role itself** — n
 Judge the level comparison the same way you judge everything else in this framework: read both sides as written and reason about it, don't force either into a rigid scale — CEFR letters, LinkedIn-style buckets ("professional working proficiency"), and plain-English words ("conversational," "fluent," "native") all appear in the wild and don't map onto each other precisely. When genuinely unsure whether a stated bar exceeds the candidate's level, prefer FLAG over a silent PASS — the human is meant to be the tiebreaker, not the gate.
 
 **Worked example:** a candidate whose Languages table lists Spanish (Native) and English (B1/B2). A posting requiring "fluent Russian" → **FAIL**, Russian isn't declared at all. A posting requiring "fluent English" → **FLAG**, English is declared but "fluent" plausibly exceeds B1/B2 — score and draft the application, but tell the candidate this posting's bar may be a stretch and let them decide. A posting requiring "conversational English" or unspecified English → **PASS**, B1/B2 clears a "conversational" bar cleanly.
+
+### Posting language → document language (Thailand)
+
+The gate above decides *eligibility*; it does not decide which language you write in. Those are
+separate questions, and a posting can pass the gate in either language. For Thai-market
+applications, apply the rule in `01-candidate-profile.md` ("Thai Market Notes → Document
+language"): an **English posting → English CV and cover letter** (the default, and what Bangkok
+MNCs expect); a **Thai-language posting from a local firm, SOE or government body → Thai CV and
+cover letter**, with tool names, frameworks and job titles left in English. Record the verdict
+alongside `language_note` so `/apply` does not re-derive it.
+
+This does not relax the gate above: a Thai posting whose *role* requires a Thai level the
+candidate has not declared still FAILs, and one whose stated bar exceeds the declared level is
+still a FLAG — whatever language the documents end up in.
 
 ## Scoring Dimensions
 
@@ -95,6 +109,14 @@ Does the role and company culture match the behavioral profile?
 - Remote with occasional office: PASS
 - Requires relocation: FAIL (deal-breaker)
 - Frequent international travel: FLAG (discuss with user)
+
+**Thailand note.** Tech and AI hiring is overwhelmingly concentrated in Bangkok and its
+commuter belt, so a Bangkok posting is an ordinary commute check against the candidate's stated
+constraints — not a relocation question. Chiang Mai, Phuket, Khon Kaen and the Eastern Economic
+Corridor carry far fewer roles and typically pay 30-40% below Bangkok benchmarks: **FLAG both
+the commute and the likely pay cut for the user to judge, never auto-reject**. Where a posting
+says "remote (Thailand)", check whether it means remote within Thailand or remote for an
+overseas entity — that changes the employment and tax setup and is worth asking about.
 
 ### 5. Career Alignment & Motivation (0-100)
 Does this role advance career goals and contain tasks that energize?
