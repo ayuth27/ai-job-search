@@ -110,6 +110,9 @@ REQUIRED_IGNORE_RULES = [
     # from commands, not a skill, so a plain rooted rule is correct here -
     # unlike the **/-prefixed job_scraper/upskill rules above.
     "company_research/*.json",
+    # Recruiter mode (/talent): specs, shortlists, outreach drafts and the
+    # talent tracker all describe real third parties (Thailand PDPA).
+    "talent/**",
 ]
 
 # Negation (re-include) rules the template legitimately ships. .gitignore is
@@ -124,6 +127,8 @@ ALLOWED_IGNORE_NEGATIONS = {
     "!cv/main_example.tex",
     "!cover_letters/cover_example.tex",
     "!documents/**/.gitkeep",
+    # The one tracked file under talent/: what lives there, no candidate data.
+    "!talent/README.md",
 }
 
 # Hook commands the template legitimately ships, as "<Event>:<command>" strings.
