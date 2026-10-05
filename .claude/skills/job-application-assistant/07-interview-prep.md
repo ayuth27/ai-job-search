@@ -1,5 +1,5 @@
 ---
-framework_version: 1.0.0
+framework_version: 1.0.1
 ---
 
 # Interview Preparation Guide
@@ -80,6 +80,30 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 - "What's the balance between development/new projects and maintenance work?"
 - "How would you describe the leadership style in this team?"
 - "What do people who thrive here have in common?"
+
+## Thai Interview Customs
+
+Applies to interviews with Thai employers. MNC panels in Bangkok sit somewhere between these
+norms and Western ones, so read the room rather than assuming either extreme.
+
+- **Formality and seniority.** Expect more formality than a Western interview. Address
+  interviewers by title and name (khun + first name is the safe default), return a wai when one
+  is offered, and let the most senior person in the room set the order of questions. Dress
+  conservatively even when the engineering team is visibly casual.
+- **Humble but concrete beats assertive.** Self-promotion that reads as confident elsewhere can
+  read as boastful here. Keep the STAR structure, but frame outcomes as what the team achieved
+  while being precise about your own part ("I built the pipeline; reporting went from two days
+  to two hours") rather than superlatives. Credit collaborators - the numbers carry the claim.
+- **Loyalty and tenure questions are normal.** "Why did you leave?", "How long do you plan to
+  stay?", "Why so many roles in five years?" come up more directly and more often than in
+  Western interviews, and are not hostile. Prepare a short, forward-looking answer for each
+  transition, with no criticism of a former employer, and be ready to say plainly what would
+  make you want to stay and grow here. Long tenure is read as a virtue, not as stagnation.
+- **Being upfront about AI tooling is fine.** If asked whether you used AI to prepare the
+  application, say yes and frame it as engineering rigor: you use Claude Code the way you use
+  any other tool - to draft and review faster, with every factual claim verified by you. Have
+  one AI-assisted piece of work you can walk through end to end, including what you changed and
+  why. Do not lead with it; do not hide it when asked.
 
 ## Phone/Video Interview Tips
 - Have STAR examples written out (use this file)

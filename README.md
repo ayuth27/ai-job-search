@@ -161,6 +161,10 @@ Postings are treated as untrusted input (the workflow follows no instructions em
 
 `/reset` is also available, see [Starting over](#starting-over) below.
 
+### Recruiter mode: `/talent`
+
+`/talent` flips the workflow for the hiring side: give it a job requirement and it builds a requirement spec, sources a capped set of candidates from public GitHub data (plus link-only web search), and returns a ranked shortlist with linked evidence and English and Thai outreach drafts for the strongest matches. Nothing is ever sent, everything under `talent/` is gitignored, and `/talent --forget <login>` deletes a person's data on request in line with Thailand's PDPA.
+
 ## File structure
 
 ```

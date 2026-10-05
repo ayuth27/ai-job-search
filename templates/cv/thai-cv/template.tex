@@ -1,0 +1,203 @@
+%% Thai CV - moderncv banking, Thai (Sarabun) with English technical terms
+%% Compile with: xelatex -interaction=nonstopmode -halt-on-error <file>.tex
+%% Font paths below are relative to cv/ (where /apply writes the output).
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{banking}
+\moderncvcolor{blue}
+
+\renewcommand*{\namefont}{\fontsize{34}{36}\bfseries\upshape}
+\colorlet{firstnamecolor}{color1}
+\colorlet{lastnamecolor}{color1}
+\colorlet{namecolor}{color1}
+\renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
+
+% moderncv loads fontspec itself under xetex; these calls must come after
+% \documentclass to win. The sans option routes the document through \sfdefault,
+% so \setsansfont is the one that actually changes the body text.
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Path = ../cover_letters/OpenFonts/fonts/sarabun/, Extension = .ttf,
+  UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic]{Sarabun}
+\setsansfont[Path = ../cover_letters/OpenFonts/fonts/sarabun/, Extension = .ttf,
+  UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic]{Sarabun}
+\newfontfamily\thaifont[Path = ../cover_letters/OpenFonts/fonts/sarabun/, Extension = .ttf,
+  UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic]{Sarabun}
+\newfontfamily\latinfont[Path = ../cover_letters/OpenFonts/fonts/lato/, Extension = .ttf,
+  UprightFont = *-Reg, BoldFont = *-Bol, ItalicFont = *-RegIta,
+  BoldItalicFont = *-BolIta]{Lato}
+
+\usepackage{ucharclasses}
+\setTransitionsForThai{\thaifont}{\latinfont}
+
+% Thai is written without spaces between words; ICU line breaking plus a
+% stretchable inter-character skip is what lets XeTeX break a Thai paragraph.
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\AtEndPreamble{\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={[YOUR_NAME] - CV},
+    pdfpagemode=UseNone,
+}}
+\usepackage[scale=0.77]{geometry}
+\usepackage{needspace}
+
+% Personal data
+\name{[FIRST_NAME]}{[LAST_NAME]}
+\address{[YOUR_ADDRESS]}{}{}
+\phone[mobile]{[YOUR_PHONE]}
+\email{[YOUR_EMAIL]}
+\extrainfo{\href{[YOUR_LINKEDIN_URL]}{LinkedIn}, \href{[YOUR_GITHUB_URL]}{GitHub}}
+
+% Local-employer variant only. A photo, date of birth and nationality are
+% customary for Thai employers and unwelcome at MNCs - enable deliberately.
+% \photo[64pt][0.4pt]{[YOUR_PHOTO_FILE]}
+% \extrainfo{\href{[YOUR_LINKEDIN_URL]}{LinkedIn} \quad
+%   วันเกิด: [YOUR_DOB] \quad สัญชาติ: [YOUR_NATIONALITY]}
+
+\begin{document}
+
+% fontawesome5 contact icons sit in the title block; a ucharclasses transition
+% would re-select the text font over them, so keep transitions off until after.
+\XeTeXinterchartokenstate=0
+\makecvtitle
+\XeTeXinterchartokenstate=1
+
+% ============================================================
+%     PROFILE STATEMENT
+% ============================================================
+
+\section{ประวัติส่วนตัว}
+\vspace{1pt}
+\small{[Write a 3-5 line profile statement in Thai, tailored to the role. Keep
+tool, framework and job-title terms in English (PyTorch, MLOps, Machine Learning
+Engineer) - translating them costs ATS keyword matches and reads as unidiomatic.]}
+
+% ============================================================
+%     CORE COMPETENCIES
+% ============================================================
+
+\section{ทักษะหลัก}
+\vspace{1pt}
+\begin{itemize}
+
+\item \textbf{[SKILL_CATEGORY_1]}: [Specific skills, frameworks, tools.]
+
+\item \textbf{[SKILL_CATEGORY_2]}: [Specific skills, frameworks, tools.]
+
+\item \textbf{[SKILL_CATEGORY_3]}: [Specific skills, frameworks, tools.]
+
+\item \textbf{[SKILL_CATEGORY_4]}: [Domain expertise, methods, approaches.]
+
+\item \textbf{[SKILL_CATEGORY_5]}: [Tools, platforms, software.]
+
+\end{itemize}
+
+% ============================================================
+%     PROFESSIONAL EXPERIENCE
+% ============================================================
+
+\section{ประสบการณ์ทำงาน}
+\vspace{3pt}
+\begin{itemize}
+
+\needspace{5\baselineskip}
+\item{\cventry{[YYYY-Present]}{[JOB_TITLE]}{[COMPANY]}{[CITY, COUNTRY]}{}{\vspace{1pt}
+\begin{itemize}
+    \item {[Achievement or responsibility 1 - be specific, use numbers where possible]}
+    \item {[Achievement or responsibility 2]}
+    \item {[Achievement or responsibility 3]}
+    \item {[Achievement or responsibility 4]}
+\end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{[YYYY-YYYY]}{[JOB_TITLE]}{[COMPANY]}{[CITY, COUNTRY]}{}{\vspace{1pt}
+\begin{itemize}
+    \item {[Achievement or responsibility 1]}
+    \item {[Achievement or responsibility 2]}
+    \item {[Achievement or responsibility 3]}
+\end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{[YYYY-YYYY]}{[JOB_TITLE]}{[COMPANY]}{[CITY, COUNTRY]}{}{\vspace{1pt}
+\begin{itemize}
+    \item {[Achievement or responsibility 1]}
+    \item {[Achievement or responsibility 2]}
+\end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     EDUCATION
+% ============================================================
+
+\section{การศึกษา}
+\vspace{1pt}
+\begin{itemize}
+
+\needspace{5\baselineskip}
+\item{\cventry{[YYYY-YYYY]}{[DEGREE] in [FIELD]}{[INSTITUTION]}{[CITY, COUNTRY]}{}{\vspace{1pt}
+วิทยานิพนธ์: ``[THESIS_TITLE]'' [Brief description of research focus.]
+}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{[YYYY-YYYY]}{[DEGREE] in [FIELD]}{[INSTITUTION]}{[CITY, COUNTRY]}{}{\vspace{1pt}
+[Brief description or key topics.]
+}}
+
+\end{itemize}
+
+% ============================================================
+%     LANGUAGES
+% ============================================================
+
+\section{ภาษา}
+\vspace{1pt}
+\begin{itemize}
+\item {ไทย ([LEVEL]), อังกฤษ ([LEVEL]), [LANGUAGE_3] ([LEVEL]).}
+\end{itemize}
+
+% ============================================================
+%     PUBLICATIONS (optional)
+% ============================================================
+
+\section{ผลงานตีพิมพ์}
+\vspace{1pt}
+\begin{itemize}
+\item {[AUTHORS] ([YEAR]). [TITLE]. [JOURNAL]. \href{[DOI_URL]}{DOI}}
+\end{itemize}
+
+% ============================================================
+%     HONORS AND AWARDS (optional)
+% ============================================================
+
+\section{รางวัล}
+\vspace{1pt}
+\begin{itemize}
+\item{\textbf{[AWARD_NAME]} -- [EVENT/ORGANIZATION] ([YEAR]).}
+\end{itemize}
+
+% ============================================================
+%     REFERENCES
+% ============================================================
+
+\section{บุคคลอ้างอิง}
+\vspace{1pt}
+\begin{itemize}
+\item{ยินดีให้ข้อมูลเมื่อได้รับการร้องขอ}
+\end{itemize}
+
+\end{document}

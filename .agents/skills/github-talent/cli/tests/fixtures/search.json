@@ -1,0 +1,8 @@
+{
+  "total_count": 2,
+  "incomplete_results": false,
+  "items": [
+    {"login": "example-dev", "id": 1, "type": "User", "html_url": "https://github.com/example-dev", "score": 1.0, "email": "leak@example.com"},
+    {"login": "other-dev", "id": 2, "type": "User", "html_url": "https://github.com/other-dev", "score": 0.9}
+  ]
+}

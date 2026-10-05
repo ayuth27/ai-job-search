@@ -1,0 +1,4 @@
+[
+  {"name": "ml-thing", "description": "demo", "language": "Python", "stargazers_count": 7, "pushed_at": "2026-09-02T00:00:00Z", "html_url": "https://github.com/example-dev/ml-thing", "topics": ["ml", "pytorch"], "owner": {"email": "x@y.z"}},
+  {"name": "bare", "description": null, "language": null, "stargazers_count": 0, "pushed_at": null, "html_url": "https://github.com/example-dev/bare"}
+]
